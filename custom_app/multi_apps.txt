@@ -1,0 +1,2 @@
+git+https://github.com/michaeleino/erpnext-persistent_defaults.git#egg=persistent_defaults
+git+https://github.com/michaeleino/erpnext-customstyle.git#egg=customstyle

@@ -1,7 +1,7 @@
 APP_NAME="custom_app"
 
-variable "FRAPPE_VERSION" {}
-variable "ERPNEXT_VERSION" {}
+variable "FRAPPE_VERSION" {default = "version-13"}
+variable "ERPNEXT_VERSION" {default = "version-13"}
 
 group "default" {
     targets = ["backend", "frontend"]
@@ -13,6 +13,8 @@ target "backend" {
     args = {
       "ERPNEXT_VERSION" = ERPNEXT_VERSION
       "APP_NAME" = APP_NAME
+      "MULTIAPPS" = "https://github.com/michaeleino/erpnext-customstyle.git https://github.com/michaeleino/erpnext-persistent_defaults.git"
+      "APPS" = "erpnext-customstyle erpnext-persistent_defaults"
     }
 }
 

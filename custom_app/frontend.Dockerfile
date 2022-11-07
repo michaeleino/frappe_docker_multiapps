@@ -4,7 +4,9 @@ FROM frappe/bench:latest as assets
 
 ARG FRAPPE_VERSION=version-14
 ARG ERPNEXT_VERSION=version-14
-ARG APP_NAME
+ARG MULTIAPPS
+ARG APPS
+
 
 # Setup frappe-bench using FRAPPE_VERSION
 RUN bench init --version=${FRAPPE_VERSION} --skip-redis-config-generation --verbose --skip-assets /home/frappe/frappe-bench
@@ -24,7 +26,7 @@ RUN bench build --production --verbose --hard-link
 
 
 # Use frappe-nginx image with nginx template and env vars
-FROM frappe/frappe-nginx:${FRAPPE_VERSION}
+FROM frappe/frappe-nginx:v13
 
 # Remove existing assets
 USER root
