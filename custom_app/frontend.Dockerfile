@@ -7,6 +7,7 @@ ARG ERPNEXT_VERSION=version-14
 ARG MULTIAPPS
 ARG APPS
 
+RUN npm install -g node-gyp@latest
 
 # Setup frappe-bench using FRAPPE_VERSION
 RUN bench init --version=${FRAPPE_VERSION} --skip-redis-config-generation --verbose --skip-assets /home/frappe/frappe-bench
@@ -17,6 +18,8 @@ RUN bench get-app --branch=${ERPNEXT_VERSION} --skip-assets --resolve-deps erpne
 
 # Copy custom app(s)
 COPY --chown=frappe:frappe . apps/${APP_NAME}
+
+
 
 # Setup dependencies
 RUN bench setup requirements
