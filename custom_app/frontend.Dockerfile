@@ -23,13 +23,15 @@ WORKDIR /home/frappe/frappe-bench
 
 # Comment following if ERPNext is not required
 RUN bench get-app --branch=version-${ERPNEXT_VERSION} --skip-assets --resolve-deps erpnext
+RUN bench get-app --skip-assets --resolve-deps https://github.com/michaeleino/erpnext-persistent_defaults.git
 
 # Copy custom app(s)
-COPY --from=base --chown=frappe:frappe /root/apps/ apps/
+#COPY --from=base --chown=frappe:frappe /root/apps/ apps/
 
 
 # Setup dependencies
-RUN mv apps/{erpnext-customstyle,customstyle} && mv apps/{erpnext-persistent_defaults,persistent_defaults} && bench setup requirements
+RUN bench setup requirements
+# RUN mv apps/{erpnext-customstyle,customstyle} && mv apps/{erpnext-persistent_defaults,persistent_defaults} && bench setup requirements
 
 # Build static assets, copy files instead of symlink
 RUN bench build --verbose --hard-link
