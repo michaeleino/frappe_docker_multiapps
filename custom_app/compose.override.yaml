@@ -1,21 +1,21 @@
 services:
   configurator:
-    image: custom_app/worker:${VERSION}
+    image: custom_app/worker:latest
 
   backend:
-    image: custom_app/worker:${VERSION}
+    image: custom_app/worker:latest
 
   frontend:
-    image: custom_app/nginx:${VERSION}
+    image: custom_app/nginx:latest
 
   queue-short:
-    image: custom_app/worker:${VERSION}
+    image: custom_app/worker:latest
 
   queue-default:
-    image: custom_app/worker:${VERSION}
+    image: custom_app/worker:latest
 
   queue-long:
-    image: custom_app/worker:${VERSION}
+    image: custom_app/worker:latest
 
   scheduler:
-    image: custom_app/worker:${VERSION}
+    image: custom_app/worker:latest
