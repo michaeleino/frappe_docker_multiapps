@@ -38,7 +38,7 @@ ARG FRAPPE_VERSION=14
 
 
 # Use frappe-nginx image with nginx template and env vars
-FROM frappe/frappe-nginx:v${FRAPPE_VERSION}
+FROM frappe/frappe-nginx:${FRAPPE_VERSION}
 
 # Remove existing assets
 USER root
