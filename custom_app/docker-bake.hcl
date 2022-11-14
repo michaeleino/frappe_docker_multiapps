@@ -1,9 +1,9 @@
-APP_NAME="stmaryztn/erp.stmaryztn"
+APP_NAME="git.stmaryztn.net/stmaryztn/erp.stmaryztn"
 
-variable "FRAPPE_VERSION" {default = "13"}
-variable "ERPNEXT_VERSION" {default = "13"}
+variable "FRAPPE_VERSION" {default = "14"}
+variable "ERPNEXT_VERSION" {default = "14"}
 # frappe v13 only works with NODE_VERSION=14 & frappe v14 wants NODE_VERSION=16
-variable "NODE_VERSION" {default = "14"}
+variable "NODE_VERSION" {default = "16"}
 
 
 group "default" {
