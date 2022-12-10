@@ -18,11 +18,11 @@ RUN nvm alias default $NODE_VERSION && \
 # RUN node -v && sleep 11 && nvm ls default && sleep 10
 
 # Setup frappe-bench using FRAPPE_VERSION
-RUN bench init --version=version-${FRAPPE_VERSION} --skip-redis-config-generation --verbose --skip-assets /home/frappe/frappe-bench
+RUN bench init --version=v${FRAPPE_VERSION} --skip-redis-config-generation --verbose --skip-assets /home/frappe/frappe-bench
 WORKDIR /home/frappe/frappe-bench
 
 # Comment following if ERPNext is not required
-RUN bench get-app --branch=version-${ERPNEXT_VERSION} --skip-assets --resolve-deps erpnext
+RUN bench get-app --branch=v${ERPNEXT_VERSION} --skip-assets --resolve-deps erpnext
 #loop over apps
 RUN for app in $MULTI_APPS_REPOS; \
     do \

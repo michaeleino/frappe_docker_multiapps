@@ -1,9 +1,10 @@
 APP_NAME="git.stmaryztn.net/stmaryztn/erp.stmaryztn"
 
-variable "FRAPPE_VERSION" {default = "14"}
-variable "ERPNEXT_VERSION" {default = "14"}
+variable "FRAPPE_VERSION" {default = "13.45.3"}
+variable "ERPNEXT_VERSION" {default = "13.42.2"}
+variable "MULTI_APPS_REPOS" {default = "https://github.com/michaeleino/erpnext-customstyle.git https://github.com/michaeleino/erpnext-persistent_defaults.git"}
 # frappe v13 only works with NODE_VERSION=14 & frappe v14 wants NODE_VERSION=16
-variable "NODE_VERSION" {default = "16"}
+variable "NODE_VERSION" {default = "14"}
 
 
 group "default" {
@@ -12,12 +13,12 @@ group "default" {
 
 target "assets" {
     dockerfile = "assetshelper.Dockerfile"
-    tags = ["frappe_assets:f.${FRAPPE_VERSION}_e.${ERPNEXT_VERSION}"]
+    tags = ["frappe_assets:f.v${FRAPPE_VERSION}_e.v${ERPNEXT_VERSION}"]
     args = {
       "FRAPPE_VERSION" = FRAPPE_VERSION
       "ERPNEXT_VERSION" = ERPNEXT_VERSION
       "NODE_VERSION" = NODE_VERSION
-      "MULTI_APPS_REPOS" = "https://github.com/michaeleino/erpnext-customstyle.git https://github.com/michaeleino/erpnext-persistent_defaults.git"
+      "MULTI_APPS_REPOS" = MULTI_APPS_REPOS
     }
 }
 
@@ -26,7 +27,7 @@ target "backend" {
     base = "target:assets"
     }
     dockerfile = "backend.Dockerfile"
-    tags = ["${APP_NAME}/worker:f.${FRAPPE_VERSION}_e.${ERPNEXT_VERSION}"]
+    tags = ["${APP_NAME}/worker:f.v${FRAPPE_VERSION}_e.v${ERPNEXT_VERSION}"]
     args = {
       "ERPNEXT_VERSION" = ERPNEXT_VERSION
       "FRAPPE_VERSION" = FRAPPE_VERSION
@@ -38,7 +39,7 @@ target "frontend" {
     base = "target:assets"
     }
     dockerfile = "frontend.Dockerfile"
-    tags = ["${APP_NAME}/nginx:f.${FRAPPE_VERSION}_e.${ERPNEXT_VERSION}"]
+    tags = ["${APP_NAME}/nginx:f.v${FRAPPE_VERSION}_e.v${ERPNEXT_VERSION}"]
     args = {
       "FRAPPE_VERSION" = FRAPPE_VERSION
       "ERPNEXT_VERSION" = ERPNEXT_VERSION
