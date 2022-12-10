@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 ARG ERPNEXT_VERSION
 
-FROM frappe/erpnext-worker:${ERPNEXT_VERSION}
+FROM frappe/erpnext-worker:v${ERPNEXT_VERSION}
 
 USER root
 
