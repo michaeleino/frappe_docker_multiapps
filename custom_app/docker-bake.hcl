@@ -13,7 +13,7 @@ group "default" {
 
 target "assets" {
     dockerfile = "assetshelper.Dockerfile"
-    tags = ["frappe_assets:f.v${FRAPPE_VERSION}_e.v${ERPNEXT_VERSION}"]
+    #tags = ["frappe_assets:f.v${FRAPPE_VERSION}_e.v${ERPNEXT_VERSION}"]
     args = {
       "FRAPPE_VERSION" = FRAPPE_VERSION
       "ERPNEXT_VERSION" = ERPNEXT_VERSION
