@@ -28,6 +28,7 @@ target "backend" {
     }
     dockerfile = "backend.Dockerfile"
     tags = ["${APP_NAME}/worker:f.v${FRAPPE_VERSION}_e.v${ERPNEXT_VERSION}"]
+    output = ["type=registry"]
     args = {
       "ERPNEXT_VERSION" = ERPNEXT_VERSION
       "FRAPPE_VERSION" = FRAPPE_VERSION
@@ -40,6 +41,7 @@ target "frontend" {
     }
     dockerfile = "frontend.Dockerfile"
     tags = ["${APP_NAME}/nginx:f.v${FRAPPE_VERSION}_e.v${ERPNEXT_VERSION}"]
+    output = ["type=registry"]
     args = {
       "FRAPPE_VERSION" = FRAPPE_VERSION
       "ERPNEXT_VERSION" = ERPNEXT_VERSION
