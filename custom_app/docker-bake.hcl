@@ -1,7 +1,7 @@
 APP_NAME="git.stmaryztn.net/stmaryztn/erp.stmaryztn"
 
-variable "FRAPPE_VERSION" {default = "14.20.0"}
-variable "ERPNEXT_VERSION" {default = "14.11.0"}
+variable "FRAPPE_VERSION" {default = "13.46.1"}
+variable "ERPNEXT_VERSION" {default = "13.42.5"}
 variable "MULTI_APPS_REPOS" {default = "https://github.com/michaeleino/erpnext-customstyle.git https://github.com/michaeleino/erpnext-persistent_defaults.git"}
 # frappe v13 only works with NODE_VERSION=14 & frappe v14 wants NODE_VERSION=16
 variable "NODE_VERSION" {default = "16"}
